@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHE SHOES - Information Client</title>
+    <link rel="stylesheet" href="admin-style.css">
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Formulaire d'information client -->
+        <div class="login-panel" id="client-info">
+            <div class="logo-container">
+                <img src="logo.jpg" alt="Logo SHE SHOES">
+                <h1>Vos informations</h1>
+            </div>
+            <form id="info-form">
+                <div class="form-group">
+                    <label for="fullname">Nom complet</label>
+                    <input type="text" id="fullname" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Téléphone</label>
+                    <input type="tel" id="phone" required>
+                </div>
+                <button type="submit" class="login-btn">Continuer</button>
+            </form>
+        </div>
+
+        <!-- Dashboard panel - hidden by default -->
+        <div class="dashboard-panel" id="admin-dashboard" style="display: none;">
+            <header class="admin-header">
+                <div class="logo">
+                    <img src="logo.jpg" alt="Logo SHE SHOES">
+                    <h1>SHE SHOES - Administration</h1>
+                </div>
+                <a href="index2.html" id="logout-btn" class="logout-btn">Retour au site</a>
+            </header>
+            
+            <div class="admin-content">
+                <div class="sidebar">
+                    <ul>
+                        <li class="active" data-tab="products-tab">Gestion des produits</li>
+                        <li data-tab="stats-tab">Statistiques</li>
+                        <li data-tab="settings-tab">Paramètres</li>
+                    </ul>
+                </div>
+                
+                <div class="main-content">
+                    <!-- Gestion des produits -->
+                    <div class="tab-content active" id="products-tab">
+                        <div class="action-bar">
+                            <h2>Gestion des produits</h2>
+                            <div class="action-buttons">
+                        
+                                <button id="add-product-btn" class="primary-btn">Ajouter un produit</button>
+                            </div>
+                        </div>
+                        
+                        <div class="filter-bar">
+                            <div class="search-box">
+                                <input type="text" id="search-products" placeholder="Rechercher un produit...">
+                            </div>
+                            <div class="category-filter">
+                                <select id="admin-category-filter">
+                                    <option value="all">Toutes les catégories</option>
+                                    <option value="Sandales">Sandales</option>
+                                    <option value="Sneakers">Sneakers</option>
+                                    <option value="Bottes">Bottes</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="products-table-container">
+                            <table class="products-table">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Nom</th>
+                                        <th>Prix (DH)</th>
+                                        <th>Catégorie</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="products-table-body">
+                                    <!-- Products will be loaded here -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <!-- Statistiques -->
+                    <div class="tab-content" id="stats-tab">
+                        <h2>Statistiques</h2>
+                        <div class="stats-cards">
+                            <div class="stat-card">
+                                <h3>Produits totaux</h3>
+                                <p id="total-products">30</p>
+                            </div>
+                            <div class="stat-card">
+                                <h3>Catégories</h3>
+                                <p id="categories-count">3</p>
+                            </div>
+                            <div class="stat-card">
+                                <h3>Prix moyen</h3>
+                                <p id="avg-price">275 DH
+
+                                    
+                                </p>
+                            </div>
+                        </div>
+                        <div class="chart-container">
+                            <h3>Répartition par catégorie</h3>
+                            <div class="category-chart">
+                                <!-- Ici on pourrait ajouter un graphique -->
+                                <div class="chart-bar-container">
+                                    <div class="chart-label">Sandales</div>
+                                    <div class="chart-bar" style="width: 33%;">10</div>
+                                </div>
+                                <div class="chart-bar-container">
+                                    <div class="chart-label">Sneakers</div>
+                                    <div class="chart-bar" style="width: 33%;">10</div>
+                                </div>
+                                <div class="chart-bar-container">
+                                    <div class="chart-label">Bottes</div>
+                                    <div class="chart-bar" style="width: 33%;">10</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Paramètres -->
+                    <div class="tab-content" id="settings-tab">
+                        <h2>Paramètres</h2>
+                        <form id="settings-form">
+                            <div class="form-group">
+                                <label for="shop-name">Nom de la boutique</label>
+                                <input type="text" id="shop-name" value="SHE SHOES">
+                            </div>
+                            <div class="form-group">
+                                <label for="admin-email">Email administrateur</label>
+                                <input type="email" id="admin-email" value="admin@sheshoes.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="client-data">Informations client</label>
+                                <textarea id="client-data" rows="4" readonly></textarea>
+                            </div>
+                            <button type="submit" class="primary-btn">Enregistrer</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal pour ajouter/modifier un produit -->
+    <div id="product-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-title">Ajouter un produit</h2>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="product-form">
+                    <input type="hidden" id="product-id">
+
+                    <div class="form-group">
+                        <label for="product-name">Nom du produit</label>
+                        <input type="text" id="product-name" required>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="product-price">Prix (€)</label>
+                            <input type="number" id="product-price" min="0" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="product-category">Catégorie</label>
+                            <select id="product-category" required>
+                                <option value="Sandales">Sandales</option>
+                                <option value="Sneakers">Sneakers</option>
+                                <option value="Bottes">Bottes</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="product-image">Image URL</label>
+                        <input type="text" id="product-image" placeholder="image1.jpg" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="product-short-desc">Description courte</label>
+                        <textarea id="product-short-desc" rows="2" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="product-desc">Description complète</label>
+                        <textarea id="product-desc" rows="4" required></textarea>
+                    </div>
+                    
+                    <div class="form-buttons">
+                        <button type="button" class="secondary-btn" id="cancel-product">Annuler</button>
+                        <button type="submit" class="primary-btn">Enregistrer</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal de confirmation de suppression -->
+    <div id="delete-modal" class="modal">
+        <div class="modal-content delete-modal-content">
+            <div class="modal-header">
+                <h2>Confirmer la suppression</h2>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <p>Êtes-vous sûr de vouloir supprimer ce produit? Cette action est irréversible.</p>
+                <input type="hidden" id="delete-product-id">
+                <div class="form-buttons">
+                    <button type="button" class="secondary-btn" id="delete-cancel">Annuler</button>
+                    <button type="button" class="danger-btn" id="delete-confirm">Supprimer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="admin-script.js"></script>
+</body>
+</html>

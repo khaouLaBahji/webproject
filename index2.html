@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHE SHOES - Boutique de Chaussures</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style-additional.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="logo.jpg" alt="Logo SHE SHOES">
+            <h1>SHE SHOES</h1>
+        </div>
+        
+        <!-- Ajout de la barre de recherche -->
+        <div class="search-container">
+            <input type="text" class="search-input" id="search-input" placeholder="Rechercher des chaussures...">
+            <button class="search-button" id="search-button">Rechercher</button>
+        </div>
+        
+        <div class="filter-container">
+            <div class="filters">
+                <div class="filter-group">
+                    <label for="category-filter">Catégorie</label>
+                    <select id="category-filter">
+                        <option value="all">Toutes les catégories</option>
+                        <option value="Sandales">Sandales</option>
+                        <option value="Sneakers">Sneakers</option>
+                        <option value="Bottes">Bottes</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label for="price-filter">Prix</label>
+                    <select id="price-filter">
+                        <option value="all">Tous les prix</option>
+                        <option value="0-200">0 - 200 DH</option>
+                        <option value="200-300">200 - 300 DH</option>
+                        <option value="300-400">300 - 400 DH</option>
+                        <option value="400-500">400+ DH</option>
+                    </select>
+                </div>
+                
+                <button id="apply-filters">Appliquer les filtres</button>
+            </div>
+        </div>
+
+        <div class="header-right">
+            <a href="admin-login.html" class="admin-btn">Admin</a>
+            <div class="cart-icon">
+                🛒 
+                <span id="cart-count">0 articles</span>
+                (<span id="cart-total-price">0</span> DH)
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div id="products-container" class="products-container"></div>
+        
+        <!-- Ajout de la vue détaillée du produit -->
+        <div id="product-detail-view" class="product-detail-view" style="display: none;">
+            <div class="product-detail-container">
+                <div class="product-detail-image">
+                    <img src="" alt="" class="product-detail-img">
+                </div>
+                <div class="product-detail-info">
+                    <h2 class="product-detail-title"></h2>
+                    <p class="product-detail-price"></p>
+                    <p class="product-detail-category"></p>
+                    <p class="product-detail-description"></p>
+                    <button class="add-to-cart-detail">Ajouter au panier</button>
+                    <button id="back-to-products" class="back-to-products">Retour aux produits</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Ajout du pied de page avec les informations de contact -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>À propos de SHE SHOES</h3>
+                <p>SHE SHOES est votre boutique spécialisée en chaussures féminines de qualité depuis 2018. Nous proposons des collections uniques pour tous les styles et toutes les occasions.</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contactez-nous</h3>
+                <p><strong>Adresse :</strong> 123 Avenue Mohammed V, Casablanca, Maroc</p>
+                <p><strong>Téléphone :</strong> +212 522 12 34 56</p>
+                <p><strong>Email :</strong> contact@sheshoes.ma</p>
+                <p><strong>Horaires :</strong> Lun-Sam: 9h-19h | Dim: Fermé</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Liens rapides</h3>
+                <p><a href="#">Nouveautés</a></p>
+                <p><a href="#">Nos collections</a></p>
+                <p><a href="#">Promotions</a></p>
+                <p><a href="#">Politique de retour</a></p>
+                <p><a href="#">Livraison</a></p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Suivez-nous</h3>
+                <p>Restez informé de nos dernières collections et promotions !</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook">F</a>
+                    <a href="#" aria-label="Instagram">I</a>
+                    <a href="#" aria-label="Twitter">T</a>
+                    <a href="#" aria-label="Pinterest">P</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2025 SHE SHOES. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <div id="cart-modal" class="cart-modal">
+        <div class="cart-header">
+            <span class="cart-title">Panier</span>
+            <button class="close">&times;</button>
+        </div>
+        <div id="cart-items" class="cart-items"></div>
+        <div class="cart-total">
+            Total: <span id="cart-total">0</span> DH
+        </div>
+        <button id="checkout-btn" class="checkout-btn">Commander</button>
+    </div>
+
+    <script src="script1.js"></script>
+    <script src="search.js"></script>
+</body>
+</html>
